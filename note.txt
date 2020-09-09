@@ -1,0 +1,25 @@
+font awesome sử dụng icon
+
+<i class="fab fa-facebook"></i> facebook
+<i class="fas fa-home"></i> home
+<i class="far fa-edit"></i> post edit
+<i class="fas fa-info-circle"></i> info
+<i class="fas fa-tag"></i> tag
+<i class="fas fa-tags"></i> tags
+<i class="fas fa-user-circle"></i> user
+<i class="fab fa-telegram"></i> telegram
+<i class="far fa-envelope"></i> mail
+<i class="far fa-copyright"></i> copyright
+<i class="fab fa-github"></i> github
+<i class="far fa-calendar-alt"></i> calendar
+<i class="fas fa-hamburger"></i> hamburger
+
+mô tả chức năng
+navbar và footer KHÔNG render lại
+homepage: khi nhấn vào đây thì post-list sẽ render toàn bộ postList ở file App (bài đăng mặc định)
+post: nhấn vào nó sẽ render ra post với id là {{gì đó}}, post này sẽ chứa danh sách tất cả các bài viết, khi nhấp vào thì nó sẽ thay thế post-list đang render
+--> nên đổi tên post-list, xem lại props-down 
+introduce: render id page giới thiệu các công nghệ sử dụng trong dự án
+
+
+tags: mỗi bài viết sẽ có tag (phức tạp) -> giải quyết sau
