@@ -1,25 +1,81 @@
-font awesome sử dụng icon
-
-<i class="fab fa-facebook"></i> facebook
-<i class="fas fa-home"></i> home
-<i class="far fa-edit"></i> post edit
-<i class="fas fa-info-circle"></i> info
-<i class="fas fa-tag"></i> tag
-<i class="fas fa-tags"></i> tags
-<i class="fas fa-user-circle"></i> user
-<i class="fab fa-telegram"></i> telegram
-<i class="far fa-envelope"></i> mail
-<i class="far fa-copyright"></i> copyright
-<i class="fab fa-github"></i> github
-<i class="far fa-calendar-alt"></i> calendar
-<i class="fas fa-hamburger"></i> hamburger
-
-mô tả chức năng
-navbar và footer KHÔNG render lại
-homepage: khi nhấn vào đây thì post-list sẽ render toàn bộ postList ở file App (bài đăng mặc định)
-post: nhấn vào nó sẽ render ra post với id là {{gì đó}}, post này sẽ chứa danh sách tất cả các bài viết, khi nhấp vào thì nó sẽ thay thế post-list đang render
---> nên đổi tên post-list, xem lại props-down 
-introduce: render id page giới thiệu các công nghệ sử dụng trong dự án
+--------------------------------------------------------------------
+TÀI LIỆU GHI CHÚ “ĐÂY LÀ MỘT CHIẾC BLOG”
+--------------------------------------------------------------------
 
 
-tags: mỗi bài viết sẽ có tag (phức tạp) -> giải quyết sau
+1. Nền tảng
+
+JS framework: VueJS https://vuejs.org/
+CSS framework: Bootstrap https://getbootstrap.com/
+Icons: Font Awesome https://fontawesome.com/
+Fonts: Google Font https://fonts.google.com/
+Hosting: GitHub Pages https://pages.github.com/
+
+
+2. Thao tác
+
+Toàn bộ source code được lưu trữ tại GitHub: github.com/quoctann/blog
+Mã nguồn chính được lưu tại branch master, mã nguồn production được lưu tại branch gh-pages
+Thao tác khởi tạo:
+	git init
+	git remote add origin link-remote-here
+	git branch gh-pages
+	git add *
+	git commit -m “This is commit message”
+	git push origin master
+Thao tác cập nhật:
+Thêm bài viết mới tại store.js theo format mẫu
+Sau khi chỉnh sửa source code, tại branch master, gõ npm run build
+Sau khi build ra folder dist chứa file production, tại branch master sử dụng các lệnh:
+	git add dist && git commit -m "This is commit message"
+Nếu folder dist đã được tracked (staged) rồi thì không cần lệnh add nữa.
+	git subtree push --prefix dist origin gh-pages
+Lệnh này sẽ đẩy toàn bộ files trong folder dist lên branch gh-pages, tại branch này GitHub sẽ tự động nhận diện và đã có thể truy cập được.
+
+
+3. Mô tả chức năng xử lý
+
+3.1 Mô tả khái quát
+
+Tổng quát có thể chia trang thành 3 phần:
+Phần menu nằm trên cùng chứa các điều khiển (tabs) và có thể lọc nhãn bài viết tại đây, menu nằm cố định (fixed top) khi cuộn trang và không cần reload lại mỗi khi người dùng có thao tác.	
+Phần nội dung chứa các thành phần thay đổi theo thao tác người dùng như bài viết, các ô nội dung.	
+Phần chân trang nằm dưới phần nội dung, tương tự menu không cần render lại khi có thay đổi, chứa các thông tin liên hệ.
+	
+3.2 Mô tả hoạt động
+
+3.2.1 Thanh menu và nội dung render
+
+Thành phần "Tên blog" khi người dùng click vào đây sẽ làm tắt bộ lọc bài viết và đưa người dùng trở về "Trang chủ", tương tự như khi click vào thành phần "Trang chủ"
+Thành phần "Trang chủ" sẽ render ra các bài viết có giá trị "đề xuất" là true (thích hợp khi cần đề xuất một loạt bài viết nổi bật), phía còn lại là ô giới thiệu vắn tắt tác giả cùng với ô công cụ lọc bài viết (theo ngày và theo nhãn)
+Thành phần "Giới thiệu" sẽ render một component đơn giản, không có tương tác với component khác (nội dung để giới thiệu).
+Thành phần "Bài viết" sẽ render toàn bộ các bài viết dưới dạng lưới với các ô nội dung.
+Thành phần "Nhãn bài viết" là một menu dropdown, khi người dùng click chọn một nhãn, bộ lọc bài viết sẽ được bật và lọc theo điều kiện: nếu người dùng đang ở "Trang chủ" thì bài viết được lọc nhưng vẫn giữ format "Trang chủ", còn ở các vị trí khác sẽ tương ứng với người dùng ở vị trí "Bài viết".
+
+3.2.2 Chân trang
+
+Các icon sẽ dẫn đến các liên kết ngoài tương ứng
+
+3.2.3 Ô bài viết rút gọn
+
+Khi người dùng click vào nút "Xem bài viết đầy đủ" thì phần nội dung sẽ render nội dung bài viết đó
+Khi người dùng click vào ngày tháng hoặc nhãn bài viết thì bộ lọc sẽ được bật với các giá trị tương ứng (sử dụng chung các cơ chế lọc).
+
+3.2.4 Bài viết đầy đủ
+
+Bài viết đầy đủ là một component dàn trang tương tự thành phần "Giới thiệu"
+
+3.3 Mô tả các component
+
+Thanh menu: NavigationBar.vue
+Chân trang: Footer.vue
+Trang chủ: Home.vue
+Bài viết: Posts.vue
+Bài viết cụ thể: SelectedPost.vue
+Trang giới thiệu: Introduce.vue
+
+Các mô tả cụ thể hơn vui lòng xem code comments
+
+
+21:53 GMT+7 11 September 2020
+Trần Quốc Tấn

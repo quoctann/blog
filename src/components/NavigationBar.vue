@@ -1,13 +1,14 @@
 <template>
   <div class="sticky-top navigation-bar shadow">
+
     <nav
       class="navbar navbar-expand-xl navbar-light"
       style="background-color: #baf2bb"
     >
-      <a class="navbar-brand" href="#" @click="homepage('homepage')">
+      <a class="navbar-brand" href="#" @click="switchPageTo('homepage')">
         <i class="fas fa-quote-left"></i>
-        Đây là một chiếc blog</a
-      >
+        Đây là một chiếc blog
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -24,39 +25,29 @@
         <ul class="navbar-nav">
           <li
             class="nav-item"
-            v-bind:class="{
-              active:
-                this.$store.state.currentNavItem == 'homepage' ? true : false,
-            }"
+            v-bind:class="{ active: this.$store.state.currentNavItem == 'homepage' ? true : false, }"
           >
-            <!-- put some data binding here for active class -->
-            <a class="nav-link" href="#" @click="homepage('homepage')">
+            <a class="nav-link" href="#" @click="switchPageTo('homepage')">
               <i class="fas fa-home"></i>
-              Trang chủ</a
-            >
+              Trang chủ
+            </a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
               href="#"
-              @click="handlePostsPageClick('postspage')"
+              @click="switchPageTo('postspage')"
             >
               <i class="fas fa-edit"></i>
-              Bài viết</a
-            >
+              Bài viết
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" @click="handleIntroClick('intropage')">
+            <a class="nav-link" href="#" @click="switchPageTo('intropage')">
               <i class="fas fa-info-circle"></i>
-              Giới thiệu</a
-            >
+              Giới thiệu
+            </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-language"></i>
-              english</a
-              >
-          </li> -->
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -66,7 +57,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
+            > <!-- bootstrap -->
               <i class="fas fa-tags"></i>
               Nhãn bài viết
             </a>
@@ -76,13 +67,15 @@
                 v-for="lb in this.$store.state.labels"
                 v-bind:key="lb.id"
                 @click="handleTagsClick(lb.name)"
-                >{{ lb.name }}</a
-              >
+              > <!-- rendering all labels name in labels array -->
+                {{ lb.name }}
+              </a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
+  
   </div>
 </template>
 
@@ -91,45 +84,25 @@ export default {
   name: "navigation-bar",
   props: {},
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    homepage(name) {
-      this.$store.commit("selectPage", name);
-      // console.log(this.$store.state.currentNavItem)
-      this.$store.commit("cancelFilter");
-    },
     handleTagsClick(name) {
-      var current = "";
-      this.$store.commit("filtering");
-      this.$store.commit("updateLabel", name);
-      if (this.$store.state.currentNavItem === "postspage")
-        current = "postspage";
-      else if (this.$store.state.currentNavItem === "intropage")
-        current = "postspage";
-      else current = "postspage";
-      this.$store.commit("selectPage", current);
+      this.$store.commit("filtering"); // enable filter
+      this.$store.commit("updateLabel", name); // with this label name
+      this.$store.commit("selectPage", "postspage"); // and switch to posts view
     },
-    handlePostsPageClick(name) {
+    switchPageTo(name) { // switch to page "name"
       this.$store.commit("selectPage", name);
-      // console.log(this.$store.state.currentNavItem);
-      this.$store.commit("cancelFilter");
-    },
-    handleIntroClick(name) {
-      this.$store.commit("selectPage", name);
-      // console.log(this.$store.state.currentNavItem);
-      this.$store.commit("cancelFilter");
-    },
+      this.$store.commit("cancelFilter"); // and disable filter
+    }
   },
-  computed: {},
 };
 </script>
 
 <style>
 .navbar-brand {
   color: #333 !important;
-  
 }
 .navbar {
   position: sticky;
@@ -137,7 +110,7 @@ export default {
   top: 0;
 }
 .dropdown-item {
-  font-family: 'Nunito', Arial, Helvetica, sans-serif;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
 }
 .navbar,
 .navbar-brand {
@@ -152,8 +125,5 @@ export default {
 }
 .nav-item:hover {
   cursor: pointer;
-}
-.deactive {
-  display: none;
 }
 </style>

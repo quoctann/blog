@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="container-fluid p-0">
     <navigation-bar />
-    <!-- content section -->
     <home v-if="homepageActive" />
     <selected-post v-if="viewingPost" />
     <posts v-if="postspageActive" />
@@ -33,6 +32,7 @@ export default {
   },
   methods: {},
   computed: {
+    // all the methods are below to switch content views
     homepageActive: function() {
       return this.$store.state.currentNavItem === "homepage";
     },

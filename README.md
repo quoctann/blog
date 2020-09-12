@@ -1,4 +1,6 @@
 # Blog
+Personal blog build with VueJS and Bootstrap
+Display language: Vietnamese
 
 ## Project setup
 ```

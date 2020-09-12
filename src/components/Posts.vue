@@ -1,7 +1,9 @@
 <template>
   <div class="posts my-4">
+
     <div class="container">
-      <div class="card-columns">
+
+      <div class="card-columns"> <!-- this component not responsive yet -->
         <div
           class="card rounded-sm shadow my-3"
           v-for="post in filter"
@@ -43,8 +45,10 @@
             </button>
           </div>
         </div>
+
       </div>
-    </div>
+
+    </div> <!-- end container -->
   </div>
 </template>
 
@@ -60,13 +64,14 @@ export default {
       if (this.$store.state.selectedLabel !== "")
         return this.$store.state.posts.filter(
           (i) => i.label === this.$store.state.selectedLabel
-        );
+        ); // filter by label name
       return this.$store.state.posts.filter(
         (i) => i.month == this.$store.state.sMonth
-      );
+      ); // filter by date
     },
   },
   methods: {
+    // most methods below are the same as in Home.vue
     getImg(url) {
       return require(`@/assets/${url}`);
     },
@@ -77,12 +82,10 @@ export default {
     archiveSelected(month, year) {
       this.$store.commit("updateDate", month, year);
       this.$store.commit("filtering");
-      // console.log(this.$store.state.sMonth, this.$store.state.sYear);
     },
     handlePost(data) {
-      // console.log(data);
       this.$store.commit("viewingPost", data);
-    },
+    }, // get data to view a specific post
     lastUpdate(data) {
       var today = new Date();
       var dateCreated = new Date(

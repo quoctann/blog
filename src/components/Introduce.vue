@@ -40,18 +40,18 @@
       <p>
         Cho đi ở hiện tại là cách để bản thân dọn dẹp lại tâm hồn, sửa soạn lại
         nội tâm có đủ chỗ trống để nhận về những điều lớn lao và tốt đẹp hơn
-        trong tương lai. Trong lúc mình dành thời gian mày mò ở trên internet tìm tài liệu để viết trang này thì mình đã thấy rất
-        nhiều người dành nhiều giờ quay video, dành nhiều công sức biên soạn
-        những hướng dẫn rất hay và có ích - giúp đỡ được rất nhiều người như
-        mình, một cách hoàn toàn miễn phí. Mình nhận lấy những giá trị đó và cảm thấy
-        mình cũng nên dùng những gì mình biết, những gì mình cảm thấy hữu ích để
-        lan tỏa tinh thần này rộng ra, và đó là một phần mục đích mình viết
-        trang này.
+        trong tương lai. Trong lúc mình dành thời gian mày mò ở trên internet
+        tìm tài liệu để viết trang này thì mình đã thấy rất nhiều người dành
+        nhiều giờ quay video, dành nhiều công sức biên soạn những hướng dẫn rất
+        hay và có ích - giúp đỡ được rất nhiều người như mình, một cách hoàn
+        toàn miễn phí. Mình nhận lấy những giá trị đó và cảm thấy mình cũng nên
+        dùng những gì mình biết, những gì mình cảm thấy hữu ích để lan tỏa tinh
+        thần này rộng ra, và đó là một phần mục đích mình viết trang này.
       </p>
       <h4 class="deco">Nếu bạn quan tâm đến vấn đề kỹ thuật</h4>
       <p>
-        Trang blog này là static website, ngoài HTML, CSS và JS thì mình còn
-        sử dụng framework
+        Trang blog này là static website, ngoài HTML, CSS và JS thì mình còn sử
+        dụng framework
         <a href="https://vuejs.org/" class="link link-active" target="_blank"
           ><i class="fab fa-vuejs"></i> VueJS v2.6.11</a
         >
@@ -78,7 +78,6 @@
         cũng như thời gian và sự kỳ vọng của anh.
       </p>
     </div>
-    <p>Testing push git</p>
   </div>
 </template>
 

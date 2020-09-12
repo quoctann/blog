@@ -1,6 +1,7 @@
 <template>
   <div class="selected-post container">
-    <div class="img-wrapper my-3">
+
+    <div class="img-wrapper my-3"> <!-- cover image -->
       <img
         class="img shadow-md"
         v-bind:src="getImg(getData.img)"
@@ -25,10 +26,12 @@
       </div>
       <hr />
       <div class="content text-justify" v-html="getData.content"></div>
+      <!-- with v-html you can use html tag to format content-->
       <p class="update-date mt-2">
         <small class="text-muted">Cập nhật {{ lastUpdate }} ngày trước</small>
       </p>
     </div>
+
   </div>
 </template>
 
