@@ -35,7 +35,7 @@
                   <span>Ngày đăng: {{ post.day }} tháng {{ post.month }} năm {{ post.year }}</span>
                 </a>
                 <p class="card-text">
-                  <small class="text-muted">Cập nhật {{ lastUpdate(post) }} ngày trước. {{ post.wordcount }} từ, {{ post.wordcount/200 + 2 }} phút đọc</small>
+                  <small class="text-muted">Cập nhật {{ lastUpdate(post) }} ngày trước. {{ post.wordcount }} từ, khoảng {{ Math.round(post.wordcount/200) }} phút đọc</small>
                 </p> <!-- this method will calculate how long since this post was written -->
                 <button
                   type="button"

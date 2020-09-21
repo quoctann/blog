@@ -24,7 +24,7 @@
           <i class="fas fa-calendar post-icon"></i>Ngày đăng: {{ getData.date }}
         </span>
         <div>
-        <small>{{ getData.wordcount }} từ, {{ getData.wordcount/200 + 2 }} phút đọc</small>
+        <small>{{ getData.wordcount }} từ, khoảng {{ Math.round(getData.wordcount/200) }} phút đọc</small>
         </div>
       </div>
       <hr />
