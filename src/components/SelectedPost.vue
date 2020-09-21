@@ -23,12 +23,15 @@
         <span class="">
           <i class="fas fa-calendar post-icon"></i>Ngày đăng: {{ getData.date }}
         </span>
+        <div>
+        <small>{{ getData.wordcount }} từ, {{ getData.wordcount/200 + 2 }} phút đọc</small>
+        </div>
       </div>
       <hr />
       <div class="content text-justify" v-html="getData.content"></div>
       <!-- with v-html you can use html tag to format content-->
       <p class="update-date mt-2">
-        <small class="text-muted">Cập nhật {{ lastUpdate }} ngày trước</small>
+        <small class="text-muted">Cập nhật {{ lastUpdate }} ngày trước.</small>
       </p>
     </div>
 

@@ -1,0 +1,162 @@
+<!--
+Created Date: 26/11/2017
+Edited/Repost Date: 20/09/2020
+Tag: Công nghệ
+Author: Quoc Tan
+Title: Hệ điều hành Linux
+PostID: 100
+-->
+<p style='text-align: center;'>Bài viết này mình viết lần đầu vào <a class='link-active' href='https://www.facebook.com/groups/docbinhkieuit/permalink/162652201009675/'>năm 2017</a>, mình chỉ repost lại và chỉnh sửa một chút cho phù hợp với bối cảnh hiện tại.</p>
+<p>
+    Sau khi đã quá quen thuộc với hệ điều hành Windows, bản thân mình cảm thấy nên tìm một chút cảm giác mới cũng như tối ưu trải nghiệm trên chiếc PC 'khoai tây' ngót nghét chục năm tuổi của mình (ở thời điểm khởi thủy mình viết bài này), chỉ với 1GB RAM cùng với chiếc CPU Pentium cổ lỗ sĩ thì giải pháp mình chọn để vọc vạch đó là thử cài đặt hệ điều hành Linux, cụ thể là Lubuntu - một phiên bản dành cho thiết bị có cấu hình thấp được xây dựng dựa trên Ubuntu. Vậy thì qua những trải nghiệm cá nhân đó bản thân mình đã học hỏi được những gì?
+</p>
+<div style='text-align: center !important;'>
+    <div class='img-wrapper'>
+        <img src='/blog/img/lubuntu1804.png' alt='lubuntu custom theme'>
+    </div>
+    <small>Ảnh: Lubuntu 18.04 đã được tùy biến, nguồn: ảnh máy mình tự chụp</small>
+    <p></p>
+</div>
+<h2>Linux là gì?</h2>
+<p>
+    Linux là một tập hợp các hệ điều hành nguồn mở, nói một các dễ hiểu thì nó cũng tương tự như Windows hay MacOS. Tuy nhiên nếu Windows là một hệ điều hành nguồn đóng thương mại - bạn phải trả tiền để mua bản quyền sử dụng, thì các hệ điều hành Linux hầu như miễn phí hoàn toàn. Đó là bởi vì cha đẻ của Linux và Git - Linus Torvalds vào năm 1991 không cảm thấy hài lòng với MS-DOS và MINIX, nên ông muốn mua hệ điều hành UNIX,<a class='link-active' href='https://itsfoss.com/linus-torvalds-facts/#:~:text=5.,to%20buy%20a%20UNIX%20system.&text=So%20he%20decided%20to%20make,clone%20of%20UNIX%2C%20from%20scratch.' target='blank_'> nhưng may mắn cho chúng ta là ông ấy không đủ tiền để mua</a>, và thế là ông tự tạo riêng cho mình một cái tương tự, sau đó Linux Kernel cùng hàng loạt công nghệ khác ra đời, và tất nhiên, nó miễn phí!
+</p>
+<div style='text-align: center;'>
+    <div class='img-wrapper'>
+        <img src='/blog/img/linus-twitter.png' alt='linus torvalds twitter'>
+    </div>
+    <small>Ảnh: Dòng tweet nổi tiếng của Linus, nguồn: <a class='link-active' href='https://twitter.com/linus__torvalds/status/296333253571387392?lang=en' target='blank_'>Twitter</a></small>
+    <p></p>
+</div>
+<p>
+    Vào sâu vấn đề kỹ thuật một chút, <a class='link-active' href='https://www.kernel.org/' target='blank_'>Linux hay Linux Kernel</a> là một nhân hệ điều hành mạnh mẽ mà từ đó được kế thừa và phát triển thêm nhiều bản phân phối (distro) khác nhau, có thể nói mỗi một distro là một biểu hiện hoàn chỉnh của Linux (có thể kể đến một số cái tên phổ biến như: Ubuntu, Fedora, Kali Linux hay Android,...). Một số khác thì lại dựa trên những bản phân phối ổn định và được cộng đồng đánh giá cao để phát triển thêm những nhánh distro riêng (bởi vì việc phát triển trực tiếp từ nhân rất khó khăn và tốn kém nhiều công sức). Nhưng dù thế nào thì đặc trưng của hầu hết các desktop distro là đều có hỗ trợ terminal để sử dụng giao diện dòng lệnh.
+</p>
+<h2>Những điểm sáng</h2>
+<ul>
+    <li>
+        Nguồn mở và miễn phí: hầu hết các distro đều miễn phí (trừ một số rất ít là thương mại hướng tới doanh nghiệp như RedHat Linux Enterprise), chỉ việc download ảnh đĩa về và cài đặt.
+    </li>
+    <li>
+        Phần cứng: Linux tương thích khá tốt các dòng CPU, ngày nay rất nhiều hãng PC cũng cài đặt sẵn Linux thay vì Windows để giảm giá thành bán ra - đồng nghĩa họ cũng đã thiết kế phần cứng sao cho tương thích với Linux, một tín hiệu đáng mừng cho cộng đồng nguồn mở. Kế đó là yêu cầu phần cứng của Linux khá thấp (có một số cực thấp ví dụ như Tiny Core Linux với bộ cài chỉ 17MB), cho phép Linux được sử dụng rộng rãi từ các thiết bị nhúng có phần cứng hạn chế cho đến các máy chủ, siêu máy tính,...
+    </li>
+    <li>
+        Hỗ trợ: Ngày nay Linux là một dự án mã nguồn mở khổng lồ bậc nhất thế giới với hơn <a class='link-active' href='https://www.zdnet.com/article/commit-1-million-the-history-of-the-linux-kernel/' target='blank_'>28 triệu dòng code và 10.7 commits mỗi giờ</a>, được cộng đồng hỗ trợ mạnh mẽ, Linux đang ngày một đơn giản hóa cách sử dụng để được đón nhận nhiều hơn.
+    </li>
+    <li>
+        Bảo mật: do không thực sự phổ biến nên Linux được hưởng thêm sự an toàn và bảo mật hơn so với đối thủ là Windows, một số distro còn thiên về bảo mật như Kali Linux với các công cụ chuyên biệt.
+    </li>
+    <li>
+        Terminal: thao tác dòng lệnh trực quan, hỗ trợ biên dịch một số ngôn ngữ ngay trên terminal, thích hợp cho người dùng chuyên nghiệp như lập trình viên.
+    </li>
+    <li>
+        Linh hoạt: bộ cài nhẹ nhàng, thậm chí bạn có thể ghi vào USB/CD/DVD mang đi bất cứ đâu và sử dụng chúng dạng Live Session.
+    </li>
+    <li>
+        Tùy biến cao: giao diện, theme, tất tần tật đều có thể tùy biến theo sở thích
+    </li>
+</ul>
+<div style='text-align: center;'>
+    <div class='img-wrapper'>
+        <img src='/blog/img/kde-plasma-omgubuntu.png' alt='kde plasma'>
+    </div>
+    <small>Ảnh: KDE Plasma, nguồn: <a class='link-active' href='https://www.omgubuntu.co.uk/' target='blank_'>OMGUbuntu</a></small>
+    <p></p>
+</div>
+<h2>Nhiều điểm tốt như vậy, tại sao Linux lại không phổ biến?</h2>
+<ul>
+    <li>
+        Phần mềm: dù kho phần mềm của Linux cũng rất đồ sộ và đáp ứng các nhu cầu thiết yếu nhất, tuy nhiên nếu so với đối thủ Windows thì đúng là không đủ, vì những phần mềm đồ họa chuyên nghiệp của Adobe hay những tựa game AAA đình đám nhất đều hoạt động trên nền tảng Windows. Và chừng đấy lí do đã đủ để khiến người dùng phổ thông ngại phải sử dụng Linux rồi.
+    </li>
+    <li>
+        Giao diện và trải nghiệm người dùng: để sử dụng Linux thì bạn phải trang bị một số kiến thức nhất định, một số lệnh terminal cơ bản. Nhưng những cải tiến gần đây đã và đang khiến Linux thân thiện với người dùng phổ thông hơn rất nhiều.
+    </li>
+</ul>
+<h2>Có phải mọi hệ điều hành Linux based đều giống nhau?</h2>
+<p>Nguồn tham khảo:
+    <a class='link-active' href='https://goo.gl/UjdCFR' target='blank_'>(EITGuide) Phân loại Linux</a>,
+    <a class='link-active' href='https://itsfoss.com/what-is-desktop-environment/#:~:text=A%20desktop%20environment%20is%20the,%2C%20wallpapers%2C%20and%20desktop%20widgets.&text=There%20are%20several%20desktop%20environments,how%20you%20interact%20with%20it.' target='blank_'>(it's FOSS) Định nghĩa Desktop Enviroment</a>
+</p>
+<p>
+Như mình đã trình bày, một số bản phân phối ổn định và hoạt động tốt có thể trở thành một nhánh cha để phát triển các bản phân phối khác, để phân loại thì mình tham khảo một bài viết trên internet và tóm tắt lại như sau:
+</p>
+<ul>
+    <li>
+        Nhánh Debian: Nhóm này, nhìn chung, là dựa trên Debian, bản thân Debian cũng là một distro. Tất cả các distros trong nhóm này đều sử dụng phương thức quản lí gói là dpkg, phương thức cập nhật là apt. Và các tập tin cài đặt ứng dụng chính thức có đuôi là .deb; Trong nhóm này, có các thành viên nổi bật là Debian (distro chính mang tính dẫn dắt), Ubuntu (distro phổ biến nhất trong nhóm nói riêng và trong giới Linux nói chung), Linux Mint (lại dựa trên Ubuntu), và Knoppix. So với nhóm RedHat bên dưới, nhóm Debian có sự thống nhất cao hơn hẳn, và xét về độ ổn định thì ta có thể coi nhóm này ổn định hơn. Một tập tin .deb có thể được cài đặt trên tất cả các DEB distros mà không cần thay đổi, hoặc nếu có thì cũng không chỉnh sửa nhiều.
+    </li>
+    <li>
+        Nhánh RedHat: Nhóm này, nhìn chung, có xuất phát điểm là từ RedHat Linux Enterprise và bản thân RHEL cũng là 1 distro. Tuy nhiên, nó là 1 distro có tính chất thương mại và hướng tới người dùng doanh nghiệp, còn phiên bản free chính thức của nó và hướng tới người dùng cá nhân là Fedora. Ngoài hai cái tên đó, chúng ta còn có CentOS, Mandriva và OpenSUSE. So với nhóm Debian, nhóm này ít có sự thống nhất hơn. Bởi lẽ, mặc dù cùng sử dụng .rpm (vì vậy chúng còn có tên là các RPM distros) là đuôi tập tin cài đặt ứng dụng chính thức, các distros này sử dụng phương thức quản lí gói và cập nhật khá khác nhau. Fedora chính là distro cộm cán nhất của nhóm này, vì nó là bản phân phối có số lượng người dùng cao thứ hai trong giới Linux sau Ubuntu. Và cha đẻ của Linux, Sir. Linus Torvalds sử dụng distro này chứ không phải Debian hay Arch.
+    </li>
+    <li>
+        Nhánh còn lại: Tạm gom chung các distro còn lại vào nhóm này. Đại diện tiêu biểu của nhóm này là Arch Linux và Gentoo. Thực chất thì ChromeOS của Google dựa trên nền Gentoo. Đặc điểm chung của các distro trong nhóm là chúng không được dựa trên Debian hay RedHat. Một số người cho rằng Arch là bản distro cuối cùng, bởi họ đã từng dùng Ubuntu hay Fedora, và từ khi gặp Arch thì họ quyết định dừng chuyến phiêu lưu mà định cư lâu dài với distro này. Tuy nhiên, sự hỗ trợ của các lập trình viên đối với nhóm này có thể nói là có phần kém hơn so với các DEB và RPM distros.
+    </li>
+</ul>
+<p>
+    Ngoài việc được phân chia theo chiều ngang thành những nhánh (branch), thì giới Linux còn được phân loại theo chiều dọc, theo các môi trường desktop (desktop environments). Nếu nói mỗi bản phân phối là một biểu hiện cụ thể của Linux, thì mỗi phiên bản phân phối gắn với một DE là một biểu hiện cụ thể của bản phân phối đó.
+</p>
+<p>
+    Bạn có thể thấy các Linux DEs tương tự như các biến thể khác nhau của hệ điều hành Android. Mặc dù cũng là Android, nhưng Android trên máy Nexus ít nhiều khác biệt với Android trên máy Samsung, và khác nữa với Android trên máy LG. Tương tự như vậy, Ubuntu chạy DE là GNOME sẽ khác biệt với Ubuntu chạy DE là KDE, MATE hay Xfce hoặc LXDE và gần đây nhất là Budgie. Tuy nhiên, các DEs khả dụng trải dài trên tất cả các bản phân phối. Nghĩa là KDE không phải là DE độc quyền cho Ubuntu, vì cũng có Fedora chạy KDE, tương tự cho OpenSUSE với MATE và Arch với LXDE. Nếu bạn tạo ra một bảng với các hàng đại diện cho các bản phân phối, các cột là các môi trường desktop, thì mỗi ô chính là cái hệ điều hành mà bạn sẽ chuẩn bị cài đặt. Vẫn có một số DE mang tính chất độc quyền, chẳng hạn như Unity trên Ubuntu hay Elementary interface, tuy nhiên, đó chỉ là số ít.
+</p>
+<p>
+    Vậy, bạn nên chọn distro nào phù hợp với mình?
+</p>
+<ul>
+    <li>
+        Đối với người mới dùng, mình nghĩ nên sử dụng Ubuntu là hợp lý, cộng đồng lớn, tuy nhiên bạn sẽ đối mặt với vấn đề chung là các bài viết tiếng Việt còn khá ít.
+    </li>
+    <li>
+        Linux Mint (xây dựng dựa trên Debian và Ubuntu) cũng là một lựa chọn không tồi cho người mới.
+    </li>
+    <li>
+        Khi bạn thuần thục cách sử dụng Linux rồi thì bạn hãy thử các distro đòi hỏi nhiều kinh nghiệm sử dụng hơn (như Kali Linux - dùng cho mục đích an ninh mạng chẳng hạn)
+    </li>
+</ul>
+
+<h2>Cài đặt Linux như thế nào?</h2>
+<p>
+    Do chưa có điều kiện cài thử tất cả các bản phân phối, nên ở phần cuối này mình chỉ giới thiệu cách cài đặt một bản phân phối khá phổ biến đó là Ubuntu, có thể áp dụng rộng hơn vào các bản phân phối được xây dựng trên Ubuntu (Ubuntu flavours, Ubuntu based).
+</p>
+<p><b>Chuẩn bị:</b></p>
+<ul>
+    <li>
+        File ảnh đĩa .iso của bản phân phối bạn muốn dùng, tùy thuộc vào cấu hình máy của bạn mà lựa chọn bản phân phối thích hợp. Bạn có thể cài các bản có chữ LTS - Long Term Support, đây là các phiên bản được hỗ trợ dài hạn.
+    </li>
+    <li style='list-style-type: none;'><ul>
+        <li>
+            <a class='link-active' href='https://ubuntu.com/' target='blank_'>Ubuntu và Ubuntu Flavours</a>: nếu máy mạnh bạn cứ dùng Ubuntu (GNOME), Kubuntu (KDE),... còn máy yếu yếu thì dùng Lubuntu (LXQt), ngoài ra bạn có thể tham khảo thêm các Ubuntu flavours khác như Budgie, MATE,...
+        </li>
+        <li>
+            <a class='link-active' href='https://linuxmint.com/download.php' target='blank_'>Linux Mint</a>: dựa trên Ubuntu và Debian, Linux Mint cũng là distro phổ biến, nhưng không thuộc gia đình Ubuntu, thích hợp cho người mới làm quen với Linux, yêu cầu cấu hình vừa phải, tùy vào sở thích và mục đích mà bạn chọn môi trường phù hợp (Cinnamon, Xfce, KDE, MATE).
+        </li>
+    </ul></li>
+    <li>Đĩa CD/DVD hoặc ổ USB (dung lượng đủ chứa file ảnh đĩa của bạn)</li>
+    <li>Phần mềm ghi đĩa (nếu bạn cài bằng đĩa) hoặc USB Installer (nếu cài bằng USB), phần mềm Wubi (nếu bạn cài bên trong Windows)</li>
+    <li>Ổ cứng còn tầm 20GB cho thoải mái (hoặc bạn có thể xem yêu cầu trên trang chủ của bản phân phối)</li>
+    <li>Cáp mạng (đặc biệt đối với laptop)</li>
+    <li>Cái này chỉ để phòng hờ thôi: <a class='link-active' href='http://www.hirensbootcd.org/' target='blank_'>đĩa Hiren's Boot</a>, các bản backup của bạn để restore nếu có trục trặc xảy ra.</li>
+</ul>
+<p><b>Cài đặt như phần mềm trong Windows</b></p>
+<p>
+    Với wubi.exe, bạn có thể cài đặt Linux ngay bên trong Windows tương tự bạn cài mấy phần mềm khác vậy, dễ dàng gỡ bỏ bằng control panel. Dĩ nhiên tốc độ sẽ không đạt 100%, thích hợp nếu như bạn chỉ muốn dùng thử bởi vì cách này vẫn khiến bạn lệ thuộc vào Windows.
+</p>
+<p>
+    <a class='link-active' href='https://dungnt.net/blog/cai-ubuntu-su-dung-wubi/' target='blank_'>Xem hướng dẫn cài đặt</a>
+</p>
+<p>
+    Một số lưu ý khi muốn gỡ cài đặt: sau khi gỡ cài đặt bằng control panel trong Windows, bạn phải xóa luôn những thứ dính líu đến nó trong menu boot, nếu không thì thậm chí bạn sẽ chẳng thể vào menu boot của Windows được nữa: <a class='link-active' href='https://blogchiasekienthuc.com/thu-thuat-may-tinh/xoa-bot-mot-he-dieu-hanh-windows.html' target='blank_'>xem hướng dẫn gỡ cài đặt</a>.
+</p>
+<p><b>Cài thay thế hoặc tách biệt trên phân vùng</b></p>
+<p>
+    Cách này thích hợp nếu bạn muốn sử dụng tách biệt khỏi Windows, hoặc thay thế luôn Windows. <a class='link-active' href='https://blogtinhoc.com/cach-cai-ubuntu-14-04-12-04-song-song-voi-windows-7-8.html' target='blank_'>Bài hướng dẫn</a> mình tìm trên mạng này khá đầy đủ, các distro khác trong họ Ubuntu cũng được cài tương tự.
+</p>
+<p><b>Live Session</b></p>
+<p>
+    Nếu bạn không biết máy mình chạy có được không, hoặc sợ rủi ro,... thì bộ cài của Linux có thể được boot live, khi boot bằng đĩa hoặc usb sẽ có một tùy chọn đại loại là 'Try without installing', bạn sẽ dùng trực tiếp luôn, nhưng những thay đổi của bạn sẽ không được ghi lại (tức là không cài được phần mềm, tùy chỉnh,...), nó chỉ chạy trên đĩa, không ảnh hưởng đến ổ cứng đang chạy hệ điều hành khác của bạn. Tạo bộ cài bằng USB bạn có thể xem bài viết ở phần trên, tạo bộ cài bằng đĩa thì bạn chỉ cần dùng bất cứ phần mềm ghi đĩa nào.
+</p>
+<p><b>Windows Subsystem for Linux (WSL)</b></p>
+<p>
+    Những năm gần đây Microsoft trông rất mặn nồng với cộng đồng nguồn mở, từ Windows Terminal cho đến Visual Studio Code và WSL/WSL2. Với WSL bạn có thể sử dụng các công cụ, tiện ích dòng lệnh của Linux ngay trong Windows. Tuy nhiên lựa chọn này mình nghĩ sẽ phù hợp hơn cho các nhà phát triển, lập trình viên - những người dùng chuyên nghiệp làm việc nhiều với dòng lệnh, tuy nhiên nếu có hứng thú bạn vẫn có thể tham khảo <a class='link-active' href='https://docs.microsoft.com/en-us/windows/wsl/about' target='blank_'>tại đây</a>.
+</p>
+<h2>Lời kết</h2>
+<p>
+    Cuối cùng, mình rất cám ơn bạn đã dành thời gian đọc bài viết, hy vọng những thông tin mình cung cấp sẽ hữu ích với bạn!
+</p>

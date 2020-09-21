@@ -99,12 +99,4 @@ export default {
   color: #1d8348 !important;
   text-decoration: none;
 }
-.img-wrap {
-  height: 10rem;
-  width: 10rem;
-}
-.img-wrap > img {
-  width: 100%;
-  height: 100%;
-}
 </style>
