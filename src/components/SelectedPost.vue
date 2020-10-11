@@ -83,4 +83,16 @@ export default {
 .post-icon {
   margin-right: 0.5rem;
 }
+/* style for post 102, info and error code */
+.err {
+  color: red;
+}
+.inf {
+  color: gray;
+}
+pre {
+  background-color: lightgray;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
 </style>

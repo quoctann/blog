@@ -1,0 +1,235 @@
+<p>
+    Để đọc được bài viết này, đòi hỏi bạn phải có một số kiến thức nhất định về lập trình nói chung và Javascript (JS) nói riêng.
+</p>
+<p>
+    Mình nghĩ là trong quá trình học tập của bạn, đặc biệt nếu bạn quan tâm đến công nghệ web, thì sẽ không ít lần bạn bắt gặp những cụm từ như ES6, ECMAScript, arrow function,... vốn là những khái niệm mới so với Javascript đơn thuần. Vậy ECMAScript là gì, nó có những điểm gì khác biệt hay tốt hơn so với Javascript để có thể trở nên phổ biến như vậy?
+</p>
+<h2>Nói chuyện ngày xưa một chút</h2>
+<p>
+     <a href='https://en.wikipedia.org/wiki/JavaScript' target='blank_' class='link-active'>Năm 1993</a>, trình duyệt web với giao diện đồ họa đầu tiên dành cho đại chúng được phát hành, đánh dấu kỷ nguyên bùng nổ của World Wide Web. Thời kỳ đó các trang web chỉ là web tĩnh, rất hạn chế sự tương tác từ người dùng, tuy nhiên với nhu cầu ngày một cao về web động, đòi hỏi phải có một công cụ để xử lý logic các thao tác từ người dùng, và thế là LiveScript - được đổi tên thành Javascript sau đó 3 tháng - được ra đời năm 1995.
+</p>
+<p>
+    Vơi bối cảnh những năm đó tồn tại nhiều hơn một phiên bản của Javascript (Javascript của Netscape và JScript của Microsoft), làm phát sinh nhu cầu chuẩn hóa các phiên bản của các công ty công nghệ. Kết quả là từ <a href='https://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%201st%20edition,%20June%201997.pdf' target='blank_' class='link-active'>tháng 11 năm 1996</a>, Javascript được chuyển đến ECMA International (*) để chuẩn hóa, và cái tên ECMAScript được hình thành từ đây.
+</p>
+<small>(*) <a href='https://www.ecma-international.org/memento/history.htm' target='blank_' class='link-active'>European Computer Manufacturers Association</a> - hay ngắn gọn là ECMA, là một tổ chức quốc tế chuẩn hóa các kỹ thuật vận hành (chẳng hạn như lập trình, các mã lệnh input/output).</small><p></p>
+<p>
+    Cho đến nay ECMAScript đã trải qua 11 phiên bản, và phiên bản phổ biến nhất vẫn là ES6 hay ECMAScript 2015, bạn có thể xem chi tiết tên các phiên bản ECMAScript <a href='https://en.wikipedia.org/wiki/ECMAScript#ECMAScript,_ECMA-262_and_JavaScript' target='blank_' class='link-active'>tại đây</a>. Trong quy mô bài viết này, mình sẽ nói về ES6, tóm gọn những điểm hết sức cơ bản mà mình học được từ một <a href='https://www.coursera.org/projects/modern-javascript-es6-basics' target='blank_' class='link-active'>khóa học</a> trên Coursera: Modern JavaScript: ES6 Basics.
+</p>
+<h2>Variable (let) and Scoping</h2>
+<p>
+    Thông thường trong Javascript khi bạn muốn khai báo một biến bạn sẽ làm thế này:
+    <pre><code>var myCat = 'Tom';</code></pre>
+</p>
+
+<p>Tuy nhiên, ES6 cung cấp cho bạn một cách khai báo khác bắt đầu bằng từ khóa <code>let</code>, vậy thì <code>let</code> và <code>var</code> có những điểm gì khác nhau?</p>
+<ul>
+    <li>
+        <p>Bạn có thể redefine - định nghĩa lại một đối tượng được khai báo bởi <code>var</code>, nhưng <code>let</code> thì không</p>
+        <pre><code>
+            var myCat = 'Tom';\n
+            var myCat = 'Minie';\n
+            console.log(myCat);\n
+            <code class='inf'>Minie</code>
+        </code></pre>
+        <p>
+            Bạn có kiểm tra lại bằng cách nhấn phím F12 trên trình duyệt, chọn tab Console, copy và paste đoạn này vào, biến <code>myCat</code> của bạn sẽ có giá trị là <code>Minie</code>. Vì đối tượng khai báo bởi <code>var</code> có thể được định nghĩa lại tại bất cứ đâu nên sẽ khó khăn cho việc kiểm soát lỗi. Nhưng khi bạn khai báo bằng <code>let</code> thì khi bạn redefine, bạn sẽ gặp thông báo lỗi:
+        </p>
+        <pre><code>
+            let myCat = 'Tom';\n
+            let myCat = 'Minie';\n
+            console.log(myCat);\n
+            <code class='err'>error: unknown: Identifier 'myCat' has already been declared</code>
+        </code></pre>
+
+    </li>
+    <li>
+        <p>Kiểu trả về undefined</p>
+        <pre><code>
+            console.log(myDog);\n
+            var myDog = 'Han';\n
+            <code class='inf'>undefined</code>
+        </code></pre>
+        <p>
+            Kết quả mà bạn nhận được sẽ là undefined, một kiểu giá trị không hay ho cho lắm. Thông thường bạn sẽ mong muốn nhận lại một kiểu giá trị cụ thể, như bool (true/false) để xử lý các trường hợp chẳng hạn. Do đó việc bạn vô tình sử dụng một đối tượng trước khi khai báo sẽ làm chương trình khó kiểm soát, hoạt động không đúng ý muốn của bạn, gây ra lỗi. Trong ES6, khi bạn sử dụng <code>let</code> trong trường hợp này bạn sẽ nhận được thông báo lỗi:
+        </p>
+        <pre><code>
+            console.log(myDog);\n
+            var myDog = 'Han';\n
+            <code class='err'>error: Uncaught ReferenceError: Cannot access 'myDog' before initialization</code>
+        </code></pre>
+    </li>
+    <li>
+        <p>Không có block scope</p>
+        <p>Hiểu nôm na block scope là phạm vi truy cập của các đối tượng trong một block (trong một cặp ngoặc nhọn '{ }').</p>
+        <pre><code>
+            for(var i = 0; i < 2; i++) {\n
+                \tvar said = 'hey';\n
+            }\n
+            console.log(said);\n
+            <code class='inf'>hey</code>
+        </code></pre>
+        <p>Đoạn code trên bạn sẽ in được giá trị của said ra console, bởi vì biến said được khai báo bằng var không có block scope, phạm vi truy cập của nó không bị giới hạn trong hàm for, <code>let</code> cho phét bạn giới hạn phạm vi truy cập của biến trong nội tại một block.</p>
+        <pre><code>
+            for(let i = 0; i < 2; i++) {\n
+                \tlet said = 'hey';\n
+            }\n
+            console.log(said);\n
+            <code class='err'>error: Uncaught ReferenceError: said is not defined</code>
+        </code></pre>
+        <p>Một ví dụ khác</p>
+        <pre><code>
+            let said = 'yo!'\n
+            for(let i = 0; i < 2; i++) {\n
+                \tlet said = 'hey';\n
+            }\n
+            console.log(said);\n
+            <code class='inf'>yo!</code>
+        </code></pre>
+    </li>
+</ul>
+<h2>Variable (const) and Immutability</h2>
+<p>
+    Nếu <code>let</code> cho phép bạn khởi tạo một biến, có thể gán giá trị, thay đổi được (mutability), thì một từ khóa khác mà ES6 cung cấp đó là <code>const</code>, có các đặc tính tương tự <code>let</code> như không thể redefine, không thể sử dụng khi chưa khai báo. Và đặc điểm chủ yếu của <code>const</code> là không thể thay đổi (immutability), tức là bạn không thể gán giá trị cho <code>const</code> một lần nữa sau khi đã khai báo.
+</p>
+<pre><code>
+    const motorbike = ['yamaha', 'honda'];\n
+    motorbike = ['suzuki'];\n
+    <code class='err'>error: Uncaught TypeError: Assignment to constant variable.</code>
+</code></pre>
+<p>Tuy nhiên, bạn vẫn có thể thay đổi giá trị của đối tượng tạo bởi <code>const</code></p>
+<pre><code>
+    const motorbike = ['yamaha', 'honda'];\n
+    motorbike[0] = 'suzuki';\n
+    console.log(motorbike);\n
+    <code class='inf'>(2) ['suzuki','honda']</code>
+</code></pre>
+<p>Đôi lúc bạn sẽ mong muốn đối tượng <code>const</code> của bạn không thể thay đổi giá trị bên trong, thì có một phương pháp để thực hiện điều này là sử dụng <code>Object.freeze(objName)</code> để 'đóng băng' giá trị dữ liệu ở mức đầu tiên. Gọi là mức đầu tiên bởi vì bạn vẫn có thể thay đổi giá trị các đối tượng lồng nhau nhiều mức, nếu bạn muốn tất cả là 'hằng' - không thể thay đổi thì bạn phải gọi <code>Object.Freeze(objName)</code> ở tất cả các mức dữ liệu.</p>
+<pre><code>
+    const animals = {\n
+        \tfish: 'salmon',
+        \tcatsFamily: ['cheetah', 'lion']\n
+      }\n
+      Object.freeze(animals);\n
+      animals.fish = 'shark';\n
+      animals.catsFamily[0] = 'tiger'
+      console.log(animals);\n
+      <code class='inf'>
+        {\n
+            \tfish:'salmon',\n
+            \tcatsFamily:(2) [\n
+            \t'tiger',\n
+            \t'lion'\n
+            \t]\n
+        }
+      </code>
+</code></pre>
+<p>Một lưu ý khi bạn sử dụng <code>Object.freeze(objName)</code> là nếu bạn cho nó nhận vào một object con không tồn tại thì nó sẽ trả về undefined</p>
+<pre><code>
+    fish = {\n
+        \tdolphin: 1,\n
+        \tshark: 2\n
+      }\n
+      console.log(Object.freeze(fish.something));\n
+      <code class='inf'>undefined</code>
+</code></pre>
+
+<h2>Extracting data with Destructuring</h2>
+<p>Nói một cách khái quát, destructuring là một phương pháp cho bạn gán hoặc trích xuất dữ liệu từ một Object hoặc Arrays thuận tiện hơn, giảm đáng kể các dòng lệnh mà trước kia cần sử dụng để thao tác với hai cấu trúc này. Giống như cách bạn khởi gán giá trị trong ví dụ dưới đây:</p>
+<pre><code>
+    const [first, second] = [1, 2];
+    console.log(first, second);
+    <code class='inf'>1 2</code>
+</code></pre>
+<p>Hoặc trích xuất dữ liệu phần tử đầu tiên của một arrays/object:</p>
+<pre><code>
+    const animals = ['dog', 'cat', 'fish', 'dolphin'];
+    const [firstThing] = animals;
+    console.log(firstThing);
+    <code class='inf'>dog</code>
+</code></pre>
+<p>Bạn cũng có thể sử dụng dấu phẩy ',' để bỏ qua một vài phần tử khi duyệt</p>
+<pre><code>
+    const animals = ['dog', 'cat', 'fish', 'dolphin'];
+    const [ , , something] = animals;
+    console.log(something);
+    <code class='inf'>fish</code>
+</code></pre>
+<p>Và dùng một đối số thay thế cho phần còn lại của mảng (rest params/rest es6)</p>
+<pre><code>
+    const animals = ['dog', 'cat', 'fish', 'dolphin'];
+    const [first, ...others] = animals;
+    console.log(first, others);
+    <code class='inf'>dog ['cat', 'fish', 'dolphin'] </code>
+</code></pre>
+<h2>Arrow function basics</h2>
+<p>Arrow function là một cú pháp mới từ ES6 dùng để viết các hàm một cách ngắn gọn hơn, thay đổi cách từ khóa <code>this</code> được ràng buộc đến hàm cũng như đơn giản hóa scoping. Cú pháp chung: <code>(param1, param2, paramN) => expression</code>. Bằng cách này bạn cũng sẽ tránh việc phải gõ lại các từ khóa như <code>function</code>, <code>return</code>, cũng như cặp dấu ngoặc nhọn.</p>
+<pre><code>
+    //ES5
+    const number = [1, 2, 3];
+    let doubledNumber = number.map(function(num) {
+        return num * 2;
+    })
+    console.log(doubledNumber);
+    <code class='inf'>(3) [2, 4, 6]</code>
+
+    //ES6
+    const number = [1, 2, 3];
+    let calc = (num) => { return num * 2};
+    const doubledNumber = number.map(calc);
+    console.log(doubledNumber);
+    <code class='inf'>(3) [2, 4, 6]</code>
+</code></pre>
+<p>Trong một số trường hợp, bạn có thể lược bỏ các thành phần của arrow function để cho nó trông đơn giản hơn. Như bạn có thể lược bỏ <code>return</code> trong đoạn code trên (implicit return), bỏ luôn cặp dấu ngoặc đơn vì bạn chỉ sử dụng một tham số truyền vào (nhưng dấu ngoặc đơn là bắt buộc nếu hàm không tham số), đồng thời bỏ cả dấu ngoặc nhọn vì bạn chỉ có một dòng lệnh đơn giản. Sau đó dòng arrow function trên sẽ thành thế này:</p>
+<pre><code>
+    let calc = num => num * 2;
+</code></pre>
+
+<h2>Arrow function and 'this'</h2>
+<p>Trước khi có ES6, mỗi function tự định nghĩa và ràng buộc <code>this</code> cho bản thân nội hàm của nó, dựa vào cách nó được gọi, nếu function là một constructor (hàm xây dựng/khởi tạo) thì khi có lỗi nó sẽ trả về NaN (Not a Number) hoặc undefined</p>
+<pre><code>
+    function Dog() {\n
+        \tthis.age = 0;\n
+        \tsetInterval(function() {\n
+          \t\tthis.age++;\n
+          \t\tconsole.log(this.age);\n
+        \t},1000);\n
+    }\n
+    const puppy = new Dog();\n
+    <code class='inf'>NaN\nNaN\n...</code>
+</code></pre>
+<p>Như bạn thấy, <code>this.age</code> của hàm khởi tạo Dog() và <code>this.age</code> của hàm <code>setInterval()</code> đã trỏ đến hai vùng nhớ khác nhau, hoàn toàn không tham chiếu đến nhau, do đó <code>this.age</code> của <code>setInterval()</code> mặc định là chưa được khởi tạo giá trị, việc cố tình cộng thêm giá trị cho nó sẽ trả về kiểu NaN. Nhưng khi bạn thay đổi một chút với Arrow function, từ khóa <code>this</code> sẽ được bind (ràng buộc) vào hàm cha đang bao quanh nó:</p>
+<pre><code>
+    function Dog() => {\n
+        \tthis.age = 0;\n
+        \tsetInterval(() => {\n
+          \t\tthis.age++;\n
+          \t\tconsole.log(this.age);\n
+        \t},1000);\n
+    }\n
+    const puppy = new Dog();\n
+    <code class='inf'>1\n2\n3\n4\n...</code>
+</code></pre>
+<p>Một điểm khá hay nữa là bạn có thể lựa chọn thứ tự tham số nào sẽ được nhận vào xử lý:</p>
+<pre><code>
+    const checkEqual = (agrument) => {\n
+        \tconsole.log(agrument);\n
+        \treturn agrument[1] === 100;\n
+    }\n
+    console.log(checkEqual([50, 100, 200]));
+    <code class='inf'>(3) [50, 100, 200]\ntrue</code>
+</code></pre>
+<p>Sử dụng rest operator để nhận vào một tập tham số: </p>
+<pre><code>
+    const isOdd = (...agrument) => agrument % 2 === 1;\n
+    console.log(isOdd(3))
+    <code class='inf'>true</code>
+</code></pre>
+<h2>Thay lời kết</h2>
+<p>Phía trên mình vừa trình bày một số điểm mình cóp nhặt được trong quá trình học tập, có thể sẽ có nhiều sai sót hoặc chưa tối ưu nhưng mình hy vọng nó sẽ cung cấp cho bạn một cái nhìn tổng quan nhất về ES6. Theo mình thì lập trình nói riêng và những lĩnh vực khác nói chung đều cần phải học tập không ngừng và tham khảo, so sánh cũng như đối chiều nhiều nguồn thông tin khác nhau, để nhờ đó bản thân bạn có thể đúc kết được những kiến thức hữu ích nhất. Vì lẽ đó nên ở phần dưới mình sẽ để thêm một số nguồn tham khảo để bạn có thể xem thêm, do cá nhân mình cảm thấy tổng quan bài viết này còn khá sơ sài và chưa chuyên sâu cho lắm.</p>
+<ul>
+    <li><a href='https://www.w3schools.com/js/js_es6.asp' class='link-active'>W3Schools: ECMAScript 6</a></li>
+    <li><a href='https://anonystick.com/blog-developer/es6-arrow-functions-cheatsheet-2019061833209083.jsx' class='link-active'>Anonystick: ES6 Arrow Functions</a></li>
+    <li><a href='https://medium.com/@jonathan_wong/javascript-intro-to-es6-d9903026ba5e' class='link-active'>Medium: Intro to ES6</a></li>
+    <li><a href='https://anonystick.com/blog-developer/destructuring-javascript-la-gi-buong-gi-buong-chu-dung-bo-qua-phan-nay-cua-es6-2019122141422037#:~:text=Destructuring%20l%C3%A0%20m%E1%BB%99t%20c%C3%BA%20ph%C3%A1p,Destructuring%20Objects%20v%C3%A0%20Destructuring%20Arrays.' class='link-active'>Anonystick: Destructuring Javascript là gì? Buông gì buông chứ đừng bỏ qua phần này của ES6</a></li>
+    <li><a href='https://viblo.asia/p/ecmascript-es6-la-gi-overview-es6-gAm5y9RA5db' class='link-active'>ECMAScript - ES6 Là gì? Overview ES6</a></li>
+</ul>
