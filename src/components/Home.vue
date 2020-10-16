@@ -77,7 +77,7 @@
               </div>
               <hr>
               <p style="text-align: justify;">
-                Top 10 thì mình phét cho vui, nhưng nội dung mình viết thì không phét đâu! Hy vọng một ít năng lượng tích cực, cùng với một xíu hiểu biết mà mình đã đặt vào đây có thể giúp cho bạn chút gì đó! <i class="far fa-smile-wink"></i>
+                Top 10 thì mình phét cho vui, nhưng nội dung mình viết thì bỏ tình cảm vô là thiệt! Hy vọng một ít năng lượng tích cực, cùng với một xíu hiểu biết mà mình đã đặt vào đây có thể hữu ích đối với bạn! <i class="far fa-smile-wink"></i>
               </p>
               <blockquote class="blockquote text-center">
                 <small style="color: #1d8348">"Be nice, be respectful"</small>
