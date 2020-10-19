@@ -73,11 +73,11 @@
                 <span class="pl-1" style="color: #c36f09">Trời mưa biết chạy vào nhà</span>
                 <br>
                 <i class="fas fa-heart" style="color: #cb322a"></i>
-                <span class="pl-1" style="color: #a52824">Top 10 người giàu tình cảm</span>
+                <span class="pl-1" style="color: #a52824">Làm con của bố mẹ toàn thời gian</span>
               </div>
               <hr>
               <p style="text-align: justify;">
-                Top 10 thì mình phét cho vui, nhưng nội dung mình viết thì bỏ tình cảm vô là thiệt! Hy vọng một ít năng lượng tích cực, cùng với một xíu hiểu biết mà mình đã đặt vào đây có thể hữu ích đối với bạn! <i class="far fa-smile-wink"></i>
+                Bio của mình cũng không có gì quá nổi bật. Mình viết chỉ vì mình muốn thử sức viết lách, đồng thời ôn lại những gì mình học hỏi được, cũng như chia sẻ những quan niệm sống của bản thân. Hy vọng những giá trị mình tạo ra ở đây sẽ hữu ích đối với bạn! <i class="far fa-smile-wink"></i>
               </p>
               <blockquote class="blockquote text-center">
                 <small style="color: #1d8348">"Be nice, be respectful"</small>

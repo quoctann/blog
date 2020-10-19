@@ -7,7 +7,7 @@
     >
       <a class="navbar-brand" href="#" @click="switchPageTo('homepage')">
         <i class="fas fa-quote-left"></i>
-        Đây là một chiếc blog
+        Một chiếc blog
       </a>
       <button
         class="navbar-toggler"
