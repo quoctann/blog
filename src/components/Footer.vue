@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer py-1 shadow-lg ">
-    <div class="footer-icon pt-3">
+  <footer class="footer shadow-lg ">
+    <div class="footer-icon py-2">
       <div class="px-2">
         <a href="https://www.facebook.com/quctan/" target="_blank">
           <i class="fab fa-facebook"></i>
@@ -35,7 +35,7 @@ export default {
 
 <style>
 footer {
-  font-size: 18px;
+  font-size: 14px;
   color: #333;
   width: 100%;
   background-color: #baf2bb;
@@ -51,6 +51,9 @@ a:hover {
 }
 .author {
   font-weight: bold;
+}
+.author > p {
+  margin: 0;
 }
 .footer-icon {
   display: flex;

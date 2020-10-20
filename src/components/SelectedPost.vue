@@ -71,11 +71,23 @@ export default {
 
 <style>
 .img-wrapper {
-  height: 20rem;
+  height: 20%;
 }
 .img-wrapper > img {
   height: 100%;
-  max-width: 100%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  
+  .img-wrapper {
+    height: 20rem;
+  }
+  .img-wrapper > img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+  }
 }
 .title {
   font-family: "Sriracha", cursive;
