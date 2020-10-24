@@ -92,7 +92,7 @@ export default {
 
 <style>
 .deco {
-  font-family: "Sriracha", cursive;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 .link-active {
   font-weight: bold;
