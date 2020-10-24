@@ -79,7 +79,7 @@ export default {
 }
 
 @media (min-width: 768px) {
-  
+  /* small screen */
   .img-wrapper {
     height: 20rem;
   }
@@ -88,9 +88,10 @@ export default {
     width: auto;
     max-width: 100%;
   }
+  
 }
 .title {
-  font-family: "Sriracha", cursive;
+  font-family: "Josefin Sans", sans-serif;
 }
 .post-icon {
   margin-right: 0.5rem;
@@ -106,5 +107,8 @@ pre {
   background-color: lightgray;
   padding: 1rem;
   border-radius: 0.5rem;
+}
+.selected-post h2 {
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 </style>

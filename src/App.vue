@@ -54,7 +54,7 @@ export default {
 
 <style>
 .container-fluid {
-  font-family: "Nunito", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

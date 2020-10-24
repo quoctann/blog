@@ -234,7 +234,7 @@ export default {
   overflow: hidden;
 }
 .post-title {
-  font-family: "Sriracha", cursive;
+  font-family: "Josefin Sans", cursive;
   font-size: 1.5rem;
 }
 .post-icon {
@@ -245,7 +245,7 @@ export default {
 
 /* formating right side about me*/
 .myname {
-  font-family: "Sriracha", cursive;
+  font-family: "Josefin Sans", cursive;
   font-size: 1.5rem;
 }
 .feature {

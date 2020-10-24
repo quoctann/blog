@@ -108,9 +108,10 @@ export default {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 .dropdown-item {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
 }
 .navbar,
 .navbar-brand {
